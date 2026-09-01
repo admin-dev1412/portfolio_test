@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PROJECT 01 — CHALLENGER</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #111111;
+            --gray: #777777;
+            --line: #dddddd;
+            --light: #f4f4f4;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: "Pretendard", sans-serif;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           Layout
+        ========================= */
+
+        .project-page {
+            width: min(100% - 160px, 1700px);
+            margin: 0 auto;
+        }
+
+
+        /* =========================
+           Header
+        ========================= */
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding-top: 32px;
+            padding-bottom: 32px;
+
+            border-bottom: 1px solid var(--line);
+
+            font-size: 14px;
+            letter-spacing: -0.03em;
+        }
+
+        .home-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            transition: opacity 0.25s ease;
+        }
+
+        .home-link:hover {
+            opacity: 0.5;
+        }
+
+        .home-arrow {
+            font-size: 18px;
+            line-height: 0;
+        }
+
+        .project-index {
+            color: var(--gray);
+        }
+
+
+        /* =========================
+           Project Intro
+        ========================= */
+
+        .project-intro {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+
+            padding: 110px 0 90px;
+
+            gap: 80px;
+        }
+
+        .project-number {
+            margin-bottom: 20px;
+
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        .project-title {
+            font-size: clamp(64px, 8vw, 140px);
+            line-height: 0.88;
+
+            font-weight: 800;
+            letter-spacing: -0.075em;
+        }
+
+        .project-description {
+            align-self: end;
+
+            max-width: 520px;
+
+            font-size: 18px;
+            line-height: 1.65;
+
+            letter-spacing: -0.04em;
+        }
+
+
+        /* =========================
+           Project Information
+        ========================= */
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+
+            width: 100%;
+            max-width: 600px;
+
+            margin-top: 45px;
+
+            border-top: 1px solid var(--line);
+        }
+
+        .meta-row {
+            display: contents;
+        }
+
+        .meta-label,
+        .meta-value {
+            padding: 17px 0;
+
+            border-bottom: 1px solid var(--line);
+
+            font-size: 14px;
+            letter-spacing: -0.03em;
+        }
+
+        .meta-label {
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           Preparing Visual
+        ========================= */
+
+        .preparing-section {
+            padding-bottom: 150px;
+        }
+
+        .preparing-box {
+            position: relative;
+
+            width: 100%;
+            aspect-ratio: 16 / 8;
+
+            overflow: hidden;
+
+            background: var(--light);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            cursor: default;
+        }
+
+        .preparing-grid {
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    to right,
+                    rgba(0, 0, 0, 0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 80px 80px;
+
+            animation: gridMove 12s linear infinite;
+        }
+
+        .preparing-content {
+            position: relative;
+            z-index: 2;
+
+            text-align: center;
+        }
+
+        .preparing-number {
+            display: block;
+
+            margin-bottom: 18px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            letter-spacing: 0.08em;
+        }
+
+        .preparing-title {
+            font-size: clamp(38px, 5vw, 80px);
+
+            font-weight: 800;
+
+            letter-spacing: -0.07em;
+            line-height: 0.95;
+        }
+
+        .preparing-text {
+            margin-top: 22px;
+
+            font-size: 14px;
+
+            color: var(--gray);
+
+            letter-spacing: -0.03em;
+        }
+
+        .preparing-line {
+            position: absolute;
+
+            width: 1px;
+            height: 100px;
+
+            left: 50%;
+            bottom: 0;
+
+            background: var(--black);
+
+            transform-origin: bottom;
+
+            animation: linePulse 2.5s ease-in-out infinite;
+        }
+
+
+        /* =========================
+           Concept
+        ========================= */
+
+        .concept-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 100px;
+
+            padding: 0 0 160px;
+        }
+
+        .concept-title {
+            font-size: 16px;
+            font-weight: 600;
+
+            letter-spacing: -0.03em;
+        }
+
+        .concept-text {
+            max-width: 600px;
+
+            font-size: 20px;
+            line-height: 1.7;
+
+            letter-spacing: -0.045em;
+        }
+
+        .concept-text span {
+            color: var(--gray);
+        }
+
+
+        /* =========================
+           Footer
+        ========================= */
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 24px 0 32px;
+
+            border-top: 1px solid var(--line);
+
+            color: var(--gray);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           Animation
+        ========================= */
+
+        .project-header,
+        .project-intro,
+        .preparing-section,
+        .concept-section {
+            animation: pageEnter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .project-intro {
+            animation-delay: 0.08s;
+        }
+
+        .preparing-section {
+            animation-delay: 0.16s;
+        }
+
+        .concept-section {
+            animation-delay: 0.24s;
+        }
+
+        @keyframes pageEnter {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gridMove {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 80px 80px;
+            }
+        }
+
+        @keyframes linePulse {
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scaleY(0.4);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+
+        /* =========================
+           Mobile
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .project-page {
+                width: calc(100% - 32px);
+            }
+
+            .project-header {
+                padding-top: 22px;
+                padding-bottom: 22px;
+            }
+
+            .project-intro {
+                grid-template-columns: 1fr;
+
+                padding: 70px 0 65px;
+
+                gap: 60px;
+            }
+
+            .project-title {
+                font-size: clamp(58px, 17vw, 100px);
+            }
+
+            .project-description {
+                font-size: 16px;
+            }
+
+            .project-meta {
+                margin-top: 35px;
+            }
+
+            .preparing-section {
+                padding-bottom: 100px;
+            }
+
+            .preparing-box {
+                aspect-ratio: 1 / 1;
+            }
+
+            .preparing-grid {
+                background-size: 45px 45px;
+            }
+
+            .concept-section {
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+
+                padding-bottom: 100px;
+            }
+
+            .concept-text {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="project-page">
+
+        <header class="project-header">
+
+            <a href="index.html" class="home-link">
+                <span class="home-arrow">‹</span>
+                <span>HOME</span>
+            </a>
+
+            <span class="project-index">
+                PROJECT 01
+            </span>
+
+        </header>
+
+
+        <section class="project-intro">
+
+            <div>
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h1 class="project-title">
+                    준비 중...
+                </h1>
+
+            </div>
+
+
+            <div>
+
+                <p class="project-description">
+                    새로운 프로젝트를 준비하고 있습니다.
+                    현재 작업의 방향과 컨셉을 정리하고 있으며,
+                    완성된 결과물은 추후 업데이트될 예정입니다.
+                </p>
+
+
+                <div class="project-meta">
+
+                    <div class="meta-row">
+                        <span class="meta-label">TYPE</span>
+                        <span class="meta-value">Brand Identity</span>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="meta-label">YEAR</span>
+                        <span class="meta-value">2026</span>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="meta-label">STATUS</span>
+                        <span class="meta-value">Preparing</span>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="meta-label">TOOLS</span>
+                        <span class="meta-value">Illustrator · Photoshop</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="preparing-section">
+
+            <div class="preparing-box">
+
+                <div class="preparing-grid"></div>
+
+                <div class="preparing-content">
+
+                    <span class="preparing-number">
+                        PROJECT 01 / 2026
+                    </span>
+
+                    <h2 class="preparing-title">
+                        WORK<br>
+                        IN PROGRESS
+                    </h2>
+
+                    <p class="preparing-text">
+                        작품을 준비하고 있습니다.
+                    </p>
+
+                </div>
+
+                <div class="preparing-line"></div>
+
+            </div>
+
+        </section>
+
+
+        <section class="concept-section">
+
+            <div class="concept-title">
+                ABOUT THE PROJECT
+            </div>
+
+            <p class="concept-text">
+                이 공간에는 프로젝트의 제작 배경과
+                디자인 컨셉, 시각적 방향성을 소개할 예정입니다.
+                <br><br>
+                <span>
+                    완성된 프로젝트가 준비되면
+                    작업 이미지와 상세한 제작 과정을
+                    이 페이지에 업데이트합니다.
+                </span>
+            </p>
+
+        </section>
+
+
+        <footer class="project-footer">
+
+            <span>2026 PORTFOLIO</span>
+
+            <a href="index.html">
+                BACK TO HOME
+            </a>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>
