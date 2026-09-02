@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PROJECT 01</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #ffffff;
+            color: #111111;
+            font-family: "Pretendard", sans-serif;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           Page
+        ========================= */
+
+        .project-page {
+            width: min(100% - 192px, 1468px);
+            margin: 0 auto;
+        }
+
+
+        /* =========================
+           Header
+        ========================= */
+
+        .project-header {
+            height: 102px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid #d8d8d8;
+
+            font-size: 17px;
+            letter-spacing: -0.04em;
+        }
+
+        .home-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            transition: opacity 0.25s ease;
+        }
+
+        .home-link:hover {
+            opacity: 0.5;
+        }
+
+        .home-arrow {
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .project-header-title {
+            color: #777777;
+        }
+
+
+        /* =========================
+           Main Information
+        ========================= */
+
+        .project-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+
+            padding-top: 140px;
+            padding-bottom: 110px;
+        }
+
+
+        /* =========================
+           Thumbnail
+        ========================= */
+
+        .project-thumbnail-area {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-number {
+            margin-bottom: 25px;
+
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+        }
+
+        .project-thumbnail {
+            width: 660px;
+            max-width: 100%;
+            aspect-ratio: 660 / 369;
+
+            overflow: hidden;
+
+            background: #eeeeee;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .project-thumbnail:hover img {
+            transform: scale(1.03);
+        }
+
+
+        /* =========================
+           Project Information
+        ========================= */
+
+        .project-description {
+            padding-top: 4px;
+        }
+
+        .description-text {
+            font-size: 21px;
+            line-height: 1.55;
+            letter-spacing: -0.045em;
+
+            margin-bottom: 60px;
+        }
+
+        .info-list {
+            border-top: 1px solid #d8d8d8;
+        }
+
+        .info-row {
+            min-height: 66px;
+
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            align-items: center;
+
+            border-bottom: 1px solid #d8d8d8;
+
+            font-size: 16px;
+            letter-spacing: -0.035em;
+        }
+
+        .info-label {
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-weight: 400;
+        }
+
+
+        /* =========================
+           Detail Images
+        ========================= */
+
+        .detail-section {
+            width: 100%;
+
+            padding-bottom: 150px;
+        }
+
+        .detail-images {
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .detail-images img {
+            width: 100%;
+            height: auto;
+
+            display: block;
+        }
+
+
+        /* =========================
+           Footer
+        ========================= */
+
+        .project-footer {
+            padding: 20px 0 30px;
+
+            display: flex;
+            justify-content: space-between;
+
+            border-top: 1px solid #d8d8d8;
+
+            color: #777777;
+
+            font-size: 13px;
+            letter-spacing: -0.02em;
+        }
+
+
+        /* =========================
+           Mobile
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .project-page {
+                width: min(100% - 48px, 700px);
+            }
+
+            .project-intro {
+                grid-template-columns: 1fr;
+                gap: 60px;
+
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+
+            .project-thumbnail {
+                width: 100%;
+            }
+
+            .description-text {
+                font-size: 18px;
+                margin-bottom: 40px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .project-page {
+                width: calc(100% - 32px);
+            }
+
+            .project-header {
+                height: 75px;
+                font-size: 14px;
+            }
+
+            .home-arrow {
+                font-size: 18px;
+            }
+
+            .project-intro {
+                padding-top: 55px;
+                padding-bottom: 60px;
+
+                gap: 45px;
+            }
+
+            .project-number {
+                font-size: 16px;
+                margin-bottom: 18px;
+            }
+
+            .description-text {
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 35px;
+            }
+
+            .info-row {
+                min-height: 55px;
+
+                grid-template-columns: 90px 1fr;
+
+                font-size: 14px;
+            }
+
+            .detail-section {
+                padding-bottom: 80px;
+            }
+
+            .detail-images {
+                gap: 15px;
+            }
+
+            .project-footer {
+                font-size: 11px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <main class="project-page">
+
+
+        <!-- =========================
+             Header
+        ========================= -->
+
+        <header class="project-header">
+
+            <a href="index.html" class="home-link">
+                <span class="home-arrow">‹</span>
+                <span>HOME</span>
+            </a>
+
+            <span class="project-header-title">
+                PROJECT 01
+            </span>
+
+        </header>
+
+
+        <!-- =========================
+             Project Introduction
+        ========================= -->
+
+        <section class="project-intro">
+
+
+            <!-- Thumbnail -->
+
+            <div class="project-thumbnail-area">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <div class="project-thumbnail">
+
+                    <img
+                        src="images/project01-thumbnail.jpg"
+                        alt="Project 01 Thumbnail"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Project Information -->
+
+            <div class="project-description">
+
+                <p class="description-text">
+                    
+    명일방주:엔드필드 WIKI의 오퍼레이터 공략 페이지 디자인입니다.
+                </p>
+
+
+                <div class="info-list">
+
+                    <div class="info-row">
+                        <span class="info-label">TYPE</span>
+                        <span class="info-value">페이지 디자인</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span class="info-label">YEAR</span>
+                        <span class="info-value">2026</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span class="info-label">CONTRIBUTION</span>
+                        <span class="info-value">100%</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span class="info-label">TOOLS</span>
+                        <span class="info-value">Illustrator · Photoshop</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Detail Page JPEG Images
+        ========================= -->
+
+        <section class="detail-section">
+
+            <div class="detail-images">
+
+                <img
+                    src="images/project01-detail-01.jpg"
+                    alt="Project 01 Detail 01"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Footer
+        ========================= -->
+
+        <footer class="project-footer">
+
+            <span>© 2026</span>
+
+            <span>PORTFOLIO</span>
+
+        </footer>
+
+
+    </main>
+
+</body>
+</html>
